@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario - REPREGAHER GO</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+
+  <nav class="navbar" data-aos="fade-down">
+    <div class="navbar-logo">
+      <img src="img/Logo.png" alt="Repregaher Logo">
+    </div>
+    <ul class="navbar-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="movimientos.html">Movimientos</a></li>
+      <li><a href="reportes.html">Reportes</a></li>
+      <li><a href="inventario.html" class="active">Inventario</a></li>
+      <li><a href="alertas.html">Alertas</a></li>
+      <button id="theme-toggle" class="theme-btn">🌙</button>
+    </ul>
+  </nav>
+
+  <header class="hero" data-aos="fade-up">
+    <h1>Gestión de Inventario</h1>
+    <p>Control y actualización de existencias</p>
+  </header>
+
+<section class="welcome-section contenido" data-aos="fade-down">
+  <div class="welcome-content">
+    <div class="welcome-text">
+      <h1>Gestión de Inventario Inteligente</h1>
+      <p id="welcome-message">Bienvenido a REPREGAHER. Plataforma profesional de control de inventario y movimientos para la industria de filtración.</p>
+    </div>
+    <div class="user-info-quick">
+      <div class="info-card">
+        <div class="info-details">
+          <p class="info-label">PRODUCTOS EN STOCK</p>
+          <p class="info-value" id="total-productos">-</p>
+        </div>
+      </div>
+      <div class="info-card">  
+        <div class="info-details">
+          <p class="info-label">ALERTAS ACTIVAS</p>
+          <p class="info-value" id="alertas-count">-</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-details">
+          <p class="info-label">MOVIMIENTOS HOY</p>
+          <p class="info-value" id="movimientos-count">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <main class="container">
+
+    <!-- Subir archivo -->
+    <section class="card" data-aos="fade-up">
+      <h2>Subir Inventario</h2>
+      <form id="form-upload" class="form-grid">
+        <input type="file" id="archivo" accept=".xlsx,.csv,.xls" class="form-input">
+        <button type="submit" class="btn-secondary btn-wide">Subir Inventario</button>
+      </form>
+    </section>
+
+    <!-- Buscador -->
+    <section class="card" data-aos="fade-up">
+      <h2>Buscar Producto</h2>
+      <div class="form-group">
+        <label for="buscar">Producto</label>
+        <input type="text" id="buscar" placeholder="Ingresa el nombre del producto" class="form-input" required>
+      </div>
+    </section>
+
+    <!-- Tabla -->
+    <section class="card" data-aos="fade-up">
+      <h2>Inventario Actual</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-inventario"></tbody>
+      </table>
+
+      <!-- Botón para eliminar inventario -->
+      <button id="btn-eliminar" class="btn-secondary btn-wide" style="margin-top:15px;">
+        Eliminar Inventario
+      </button>
+    </section>
+
+  </main>
+
+  <!-- LIBRERÍAS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+  <script>
+    // CONFIG FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0S0gIC3efdIjONM7nZli2x4nwlgRTWNE",
+      authDomain: "repregaher.firebaseapp.com",
+      projectId: "repregaher",
+      storageBucket: "repregaher.firebasestorage.app",
+      messagingSenderId: "404425871100",
+      appId: "1:404425871100:web:16cfdbca6427bc4e4e5179"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        alert("Debes iniciar sesión o registrarte para acceder a esta sección.");
+        window.location.href = "registro.html";
+      }
+    });
+
+    // Inicializar AOS
+    AOS.init({ duration: 900, once: true });
+
+    // Modo oscuro
+    const toggleBtn = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      toggleBtn.textContent = "☀️";
+    }
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+      if (document.body.classList.contains("dark-theme")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    // Inventario dinámico
+    const formUpload = document.getElementById("form-upload");
+    const tablaInventario = document.getElementById("tabla-inventario");
+    const btnEliminar = document.getElementById("btn-eliminar");
+
+    function obtenerMovimientosHoy() {
+      return parseInt(sessionStorage.getItem("movimientosHoy") || "0", 10);
+    }
+
+    function actualizarMovimientosHoy(incremento = 0) {
+      const valorActual = obtenerMovimientosHoy() + incremento;
+      sessionStorage.setItem("movimientosHoy", valorActual);
+      document.getElementById("movimientos-count").textContent = valorActual;
+    }
+
+    function actualizarContadoresInventario() {
+      const filas = tablaInventario.querySelectorAll("tr");
+      const totalProductos = filas.length;
+      let alertasActivas = 0;
+
+      filas.forEach(fila => {
+        const cantidadText = fila.cells[2]?.textContent.trim() || "0";
+        const estadoText = fila.cells[3]?.textContent.trim().toLowerCase() || "";
+        const cantidad = parseFloat(cantidadText.replace(/[^0-9\.]/g, ""));
+
+        if (!isNaN(cantidad) && cantidad <= 5) {
+          alertasActivas++;
+        } else if (estadoText.includes("bajo") || estadoText.includes("alerta") || estadoText.includes("escaso")) {
+          alertasActivas++;
+        }
+      });
+
+      document.getElementById("total-productos").textContent = totalProductos;
+      document.getElementById("alertas-count").textContent = alertasActivas;
+      document.getElementById("movimientos-count").textContent = obtenerMovimientosHoy();
+    }
+
+    actualizarContadoresInventario();
+    actualizarMovimientosHoy(0);
+    tablaInventario.addEventListener("input", actualizarContadoresInventario);
+
+    formUpload.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const archivo = document.getElementById("archivo").files[0];
+      if (!archivo) {
+        alert("Selecciona un archivo primero");
+        return;
+      }
+
+      const reader = new FileReader();
+      const extension = archivo.name.split(".").pop().toLowerCase();
+
+      reader.onload = (event) => {
+        tablaInventario.innerHTML = ""; // limpiar tabla
+
+        if (extension === "csv") {
+          const contenido = event.target.result;
+          const lineas = contenido.split("\n").slice(1); // saltar encabezado
+          lineas.forEach(linea => {
+            const [producto, categoria, cantidad, estado] = linea.split(",");
+            if (producto) {
+              tablaInventario.innerHTML += `
+                <tr>
+                  <td contenteditable="true">${producto}</td>
+                  <td contenteditable="true">${categoria}</td>
+                  <td contenteditable="true">${cantidad}</td>
+                  <td contenteditable="true">${estado}</td>
+                </tr>`;
+            }
+          });
+        } else {
+          const data = new Uint8Array(event.target.result);
+          const workbook = XLSX.read(data, { type: "array" });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+          json.slice(1).forEach(row => {
+            if (row.length > 0) {
+              const [producto, categoria, cantidad, estado] = row;
+              tablaInventario.innerHTML += `
+                <tr>
+                  <td contenteditable="true">${producto || ""}</td>
+                  <td contenteditable="true">${categoria || ""}</td>
+                  <td contenteditable="true">${cantidad || ""}</td>
+                  <td contenteditable="true">${estado || ""}</td>
+                </tr>`;
+            }
+          });
+        }
+
+        actualizarContadoresInventario();
+        actualizarMovimientosHoy(1);
+      };
+
+      if (extension === "csv") {
+        reader.readAsText(archivo);
+      } else {
+        reader.readAsArrayBuffer(archivo);
+      }
+    });
+
+    // Buscador dinámico
+    document.getElementById("buscar").addEventListener("input", (e) => {
+      const filtro = e.target.value.toLowerCase();
+      const filas = tablaInventario.getElementsByTagName("tr");
+      for (let fila of filas) {
+        const texto = fila.textContent.toLowerCase();
+        fila.style.display = texto.includes(filtro) ? "" : "none";
+      }
+    });
+
+    // Eliminar inventario
+    btnEliminar.addEventListener("click", () => {
+      if (tablaInventario.innerHTML.trim() === "") {
+        alert("⚠️ No hay inventario cargado.");
+        return;
+      }
+      if (confirm("¿Seguro que deseas eliminar todo el inventario?")) {
+        tablaInventario.innerHTML = ""; // limpia la tabla
+        document.getElementById("archivo").value = ""; // limpia el input de archivo
+        actualizarContadoresInventario();
+        actualizarMovimientosHoy(1);
+        alert("✅ Inventario eliminado.");
+      }
+    });
+  </script>
+
+</body>
+</html>

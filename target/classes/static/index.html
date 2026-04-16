@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REPREGAHER LTDA - Gestión de Inventario Profesional</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="img/Logo.png">
+  </div>
+
+  <ul class="navbar-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="movimientos.html">Movimientos</a></li>
+    <li><a href="reportes.html">Reportes</a></li>
+    <li><a href="inventario.html">Inventario</a></li>
+    <li><a href="alertas.html">Alertas</a></li>
+    <li id="perfil-text"><a href="perfil.html">👤 Perfil</a></li>
+    <li id="perfil-img-li" style="display:none;"><a href="perfil.html" id="perfil-img-link"><img id="navbar-profile-pic" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23142890'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M 4 20 c 0-5.373 3.582-10 8-10s 8 4.627 8 10'/%3E%3C/svg%3E" alt="Perfil"></a></li>
+    <li id="btn-login-li" style="display:none;"><a href="login.html" class="btn-login">Iniciar sesión/Registrarse</a></li>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+  </ul>
+</nav>
+
+<!-- HERO SECTION PROFESIONAL -->
+<section class="hero-welcome" data-aos="fade-down">
+  <div class="hero-welcome-content">
+    <h1>Gestión Inteligente de Inventario</h1>
+    <p>Plataforma profesional para control total de inventario, movimientos y reportes en tiempo real. Diseñada para la industria de filtración.</p>
+    <div class="hero-welcome-actions">
+      <a href="inventario.html" class="btn-action btn-primary-action">Ir al Inventario</a>
+      <a href="#about" class="btn-action btn-secondary-action">Conoce Más</a>
+    </div>
+  </div>
+</section>
+
+<div class="app-window">
+<main>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about" data-aos="fade-up">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>Sobre REPREGAHER</h2>
+      <p><strong>Representaciones Garcés Hermanos — REPREGAHER LTDA</strong> es una empresa especializada en soluciones de filtración industrial con más de 25 años de trayectoria.</p>
+      <p>Ofrecemos equipos de alta tecnología, asesoría técnica especializada y ahora una plataforma digital profesional para gestionar tu inventario de manera eficiente.</p>
+      
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">📊</div>
+          <div class="highlight-text">
+            <h4>Control Total</h4>
+            <p>Gestiona inventario en tiempo real con búsqueda avanzada</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">📈</div>
+          <div class="highlight-text">
+            <h4>Reportes Detallados</h4>
+            <p>Analiza estadísticas y tendencias de movimientos</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">⚠️</div>
+          <div class="highlight-text">
+            <h4>Alertas Automáticas</h4>
+            <p>Notificaciones de productos críticos o bajo stock</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image">
+      <img src="img/1.jpg" alt="Filtración Industrial">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section" data-aos="fade-up">
+  <div class="section-header">
+    <h2>Funcionalidades Principales</h2>
+    <p>Herramientas profesionales diseñadas para optimizar tu gestión operativa</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card" onclick="location.href='inventario.html'" style="cursor: pointer;">
+      <div class="feature-icon">📦</div>
+      <h3>Inventario</h3>
+      <p>Gestiona el stock completo de productos filtrantes con búsqueda avanzada y categorización inteligente</p>
+    </div>
+
+    <div class="feature-card" onclick="location.href='movimientos.html'" style="cursor: pointer;">
+      <div class="feature-icon">🔄</div>
+      <h3>Movimientos</h3>
+      <p>Registra entradas, salidas y transferencias de productos en tiempo real con histórico completo</p>
+    </div>
+
+    <div class="feature-card" onclick="location.href='reportes.html'" style="cursor: pointer;">
+      <div class="feature-icon">📊</div>
+      <h3>Reportes</h3>
+      <p>Analiza estadísticas de ventas, rotación y rendimiento del inventario con gráficos detallados</p>
+    </div>
+
+    <div class="feature-card" onclick="location.href='alertas.html'" style="cursor: pointer;">
+      <div class="feature-icon">⚠️</div>
+      <h3>Alertas</h3>
+      <p>Recibe notificaciones automáticas de productos críticos, bajo stock o cambios importantes</p>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO EATON -->
+<section class="contenido eaton-catalogo" data-aos="fade-up">
+  <h2>Catálogo EATON - Productos Destacados</h2>
+  <p class="subtitle">Conoce nuestros productos líderes en filtración industrial disponibles en REPREGAHER</p>
+  
+  <div class="productos-destacados">
+    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/hydraulic-filters', '_blank')">
+      <div class="producto-imagen">🔹</div>
+      <h3>Filtros Hidráulicos</h3>
+      <p>Soluciones avanzadas de filtración para sistemas hidráulicos de alta presión y rendimiento</p>
+      <span class="producto-enlace">Ver catálogo →</span>
+    </div>
+
+    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/air-filters', '_blank')">
+      <div class="producto-imagen">💨</div>
+      <h3>Filtros de Aire</h3>
+      <p>Filtración eficiente de aire para aplicaciones industriales y de compresión</p>
+      <span class="producto-enlace">Ver catálogo →</span>
+    </div>
+
+    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/fluid-power-components', '_blank')">
+      <div class="producto-imagen">⚙️</div>
+      <h3>Filtros de Potencia de Fluidos</h3>
+      <p>Componentes de filtración para sistemas de potencia de fluidos de precisión</p>
+      <span class="producto-enlace">Ver catálogo →</span>
+    </div>
+
+    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration', '_blank')">
+      <div class="producto-imagen">🌐</div>
+      <h3>Todos los Productos</h3>
+      <p>Explora el catálogo completo de soluciones de filtración de EATON</p>
+      <span class="producto-enlace">Ir a catálogo completo →</span>
+    </div>
+  </div>
+
+  <div class="eaton-info">
+    <p><strong>EATON</strong> es un líder global en soluciones de filtración industrial con tecnología avanzada, confiabilidad comprobada y soporte técnico especializado.</p>
+    <a href="https://www.eaton.com" target="_blank" class="btn-eaton">Visitar EATON.com</a>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>REPREGAHER LTDA</h3>
+      <p>Representaciones Garcés Hermanos — Soluciones profesionales en filtración industrial desde 1999. Contribuimos al éxito de tu empresa con tecnología de punta y servicio de excelencia.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Términos de Servicio</a></li>
+        <li><a href="#">Política de Privacidad</a></li>
+        <li><a href="#">Política de Cookies</a></li>
+        <li><a href="#">Aviso Legal</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <p>📧 repregaher@yahoo.com</p>
+      <p>📞 +57 (601)4113097</p>
+    </div>
+  </div>
+
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<script src="firebase.js"></script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    htmlElement.classList.add('dark-theme');
+    themeToggle.textContent = '☀️';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    htmlElement.classList.toggle('dark-theme');
+    const isDark = htmlElement.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+  });
+
+  // Firebase Auth Check
+  auth.onAuthStateChanged(user => {
+    const perfilText = document.getElementById('perfil-text');
+    const perfilImgLi = document.getElementById('perfil-img-li');
+    const btnLoginLi = document.getElementById('btn-login-li');
+    const navbarProfilePic = document.getElementById('navbar-profile-pic');
+
+    if (user) {
+      perfilText.style.display = 'block';
+      perfilImgLi.style.display = 'none';
+      btnLoginLi.style.display = 'none';
+
+      db.collection('usuarios').doc(user.uid).get().then(doc => {
+        if (doc.exists) {
+          const userData = doc.data();
+          if (userData.profileImage) {
+            navbarProfilePic.src = userData.profileImage;
+            perfilImgLi.style.display = 'block';
+            perfilText.style.display = 'none';
+          }
+        }
+      });
+    } else {
+      perfilText.style.display = 'none';
+      perfilImgLi.style.display = 'none';
+      btnLoginLi.style.display = 'block';
+    }
+  });
+
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    if (n >= totalSlides) currentSlide = 0;
+    if (n < 0) currentSlide = totalSlides - 1;
+    if (slides[currentSlide]) {
+      slides[currentSlide].classList.add('active');
+    }
+  }
+
+  function nextSlide() {
+    currentSlide++;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide--;
+    showSlide(currentSlide);
+  }
+
+  const nextBtn = document.querySelector('.slider-btn.next');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Auto advance slider
+  setInterval(() => {
+    nextSlide();
+  }, 5000);
+
+  // Noticias - Fetch from API
+  fetch('https://newsapi.org/v2/everything?q=filtración+industrial&language=es&sortBy=publishedAt&apiKey=2fa70edf0ebf43188b61d7bd2cd12eef')
+    .then(response => response.json())
+    .then(data => {
+      const articles = data.articles.slice(0, 6);
+      const mainNewsDiv = document.getElementById('main-news');
+      const secondaryNewsDiv = document.getElementById('secondary-news');
+
+      if (articles.length > 0) {
+        const mainArticle = articles[0];
+        mainNewsDiv.innerHTML = `
+          <div class="main-news-card">
+            <img src="${mainArticle.urlToImage || 'img/1.jpg'}" alt="Noticia">
+            <div class="main-news-content">
+              <h3>${mainArticle.title}</h3>
+              <p>${mainArticle.description}</p>
+              <a href="${mainArticle.url}" target="_blank" class="news-link">Leer más →</a>
+            </div>
+          </div>
+        `;
+
+        if (articles.length > 1) {
+          let secondaryHTML = '';
+          for (let i = 1; i < Math.min(6, articles.length); i++) {
+            const article = articles[i];
+            secondaryHTML += `
+              <div class="news-card-secondary">
+                <img src="${article.urlToImage || 'img/2.jpg'}" alt="Noticia">
+                <h4>${article.title}</h4>
+                <p>${article.description}</p>
+                <a href="${article.url}" target="_blank" class="news-link">Leer</a>
+              </div>
+            `;
+          }
+          secondaryNewsDiv.innerHTML = secondaryHTML;
+        }
+      }
+    })
+    .catch(error => console.log('Error fetching news:', error));
+</script>
+
+</body>
+</html>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 REPREGAHER LTDA. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+AOS.init({ duration: 900, once: true });
+
+const toggleBtn = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme");
+
+if (toggleBtn) {
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    if (document.body.classList.contains("dark-theme")) {
+      toggleBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+const newsSlides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showSlide(i){
+  if (!newsSlides.length) return;
+  newsSlides.forEach(s => s.classList.remove("active"));
+  newsSlides[i].classList.add("active");
+}
+
+const newsNextBtn = document.querySelector(".next");
+const newsPrevBtn = document.querySelector(".prev");
+
+if (newsNextBtn) {
+  newsNextBtn.onclick = () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  };
+}
+
+if (newsPrevBtn) {
+  newsPrevBtn.onclick = () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  };
+}
+
+setInterval(() => {
+  current = (current + 1) % newsSlides.length;
+  showSlide(current);
+}, 5000);
+
+const API_KEY = "b1c8e5a9f0b64c7a9e8d2f3a4b5c6d7"; 
+
+async function cargarNoticias() {
+
+  const main = document.getElementById("main-news");
+  const secondary = document.getElementById("secondary-news");
+
+  main.innerHTML = "<p>Cargando noticias...</p>";
+  secondary.innerHTML = "";
+
+  try {
+
+
+    const res = await fetch(`https://newsapi.org/v2/everything?domains=eltiempo.com&q=industria OR economia OR tecnologia&language=es&pageSize=7&sortBy=publishedAt&apiKey=${API_KEY}`);
+    const data = await res.json();
+
+    if (!data.articles || data.articles.length === 0) {
+      throw new Error("Sin datos");
+    }
+
+    renderNoticias(data.articles);
+
+  } catch (error) {
+
+    console.warn("Fallback activado");
+
+    renderNoticias([
+      {
+        title:"Se acerca el último plazo para pagar el impuesto de Industria y Comercio en Bogotá: esta es la guía",
+        url:"https://www.eltiempo.com/bogota/se-acerca-el-ultimo-plazo-para-pagar-el-impuesto-de-industria-y-comercio-en-bogota-esta-es-la-guia-3515925",
+        urlToImage:"https://imagenes2.eltiempo.com/files/image_1200_535/files/fp/uploads/2025/09/02/68b76476d1482.r_d.306-204.jpeg"
+      },
+      {
+        title:"Automatización industrial en auge",
+        url:"https://www.eltiempo.com/economia/sectores/por-que-no-arranca-la-economia-los-cuellos-de-botella-y-la-hoja-de-ruta-para-reactivar-su-crecimiento-3542109",
+        urlToImage:"https://imagenes2.eltiempo.com/files/image_1200_535/files/fp/uploads/2024/07/27/66a59b30aded7.r_d.622-385.jpeg"
+      },
+      {
+        title:"La industria digital aporta el 12,2 % de las exportaciones de servicios en Colombia; los servicios informáticos lideran su crecimiento",
+        url:"https://www.eltiempo.com/economia/sectores/la-industria-digital-aporta-el-12-2-de-las-exportaciones-de-servicios-en-colombia-los-servicios-informaticos-lideran-su-crecimiento-3529354",
+        urlToImage:"https://imagenes2.eltiempo.com/files/image_1200_535/uploads/2025/10/27/68ffa2e53554b.png"
+      },
+      {
+        title:"Sector turismo creció 56% durante los primeros nueve meses de 2025, indicó ministra de Comercio, Industria y Turismo: 'Primer destino de Suramérica'",
+        url:"https://www.eltiempo.com/politica/gobierno/el-sector-turismo-crecio-56-durante-los-primeros-meses-de-2025-indico-la-ministra-de-comercio-industria-y-turismo-primer-destino-de-suramerica-3524658",
+        urlToImage:"https://imagenes2.eltiempo.com/files/image_379_284/uploads/2026/01/16/696a361c7b13b.png"
+      }
+    ]);
+  }
+}
+
+function renderNoticias(articles) {
+
+  const main = document.getElementById("main-news");
+  const secondary = document.getElementById("secondary-news");
+
+  main.innerHTML = "";
+  secondary.innerHTML = "";
+
+  const principal = articles[0];
+  const imgPrincipal = principal.urlToImage || "https://images.unsplash.com/photo-1581092919534-5b2c6c6f9c5d";
+
+  main.innerHTML = `
+    <div class="main-card" onclick="window.open('${principal.url}', '_blank')">
+      <img src="${imgPrincipal}" onerror="this.src='https://images.unsplash.com/photo-1581092919534-5b2c6c6f9c5d'">
+      <div class="main-content">
+        <span class="tag">EL TIEMPO</span>
+        <h2>${principal.title}</h2>
+        <p>${principal.description || ''}</p>
+      </div>
+    </div>
+  `;
+
+  articles.slice(1,6).forEach(n => {
+
+    const img = n.urlToImage || "https://images.unsplash.com/photo-1492724441997-5dc865305da7";
+
+    const card = document.createElement("div");
+    card.className = "small-card";
+
+    card.innerHTML = `
+      <img src="${img}" onerror="this.src='https://images.unsplash.com/photo-1492724441997-5dc865305da7'">
+      <div class="small-content">
+        <span class="tag">EL TIEMPO</span>
+        <h3>${n.title}</h3>
+      </div>
+    `;
+
+    card.onclick = () => window.open(n.url, "_blank");
+
+    secondary.appendChild(card);
+  });
+}
+
+cargarNoticias();
+setInterval(cargarNoticias, 300000);
+
+// FIREBASE CONFIG (CORREGIDO)
+const firebaseConfig = {
+  apiKey: "AIzaSyB0S0gIC3efdIjONM7nZli2x4nwlgRTWNE",
+  authDomain: "repregaher.firebaseapp.com",
+  projectId: "repregaher",
+  storageBucket: "repregaher.firebasestorage.app",
+  messagingSenderId: "404425871100",
+  appId: "1:404425871100:web:16cfdbca6427bc4e4e5179"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// ACTUALIZAR IMAGEN DE PERFIL EN NAVBAR
+auth.onAuthStateChanged(async (user) => {
+  const perfilText = document.getElementById('perfil-text');
+  const perfilImgLi = document.getElementById('perfil-img-li');
+  const btnLoginLi = document.getElementById('btn-login-li');
+  const navbarProfilePic = document.getElementById('navbar-profile-pic');
+  const welcomeMessage = document.getElementById('welcome-message');
+  
+  if (user) {
+    perfilText.style.display = 'none';
+    perfilImgLi.style.display = 'block';
+    btnLoginLi.style.display = 'none';
+    
+    try {
+      const doc = await db.collection('usuarios').doc(user.uid).get();
+      if (doc.exists && doc.data().photoURL) {
+        navbarProfilePic.src = doc.data().photoURL;
+      }
+      
+      // ACTUALIZAR BIENVENIDA CON NOMBRE DEL USUARIO
+      const nombreUsuario = doc.data()?.nombre || user.displayName || 'Profesional';
+      const rolUsuario = doc.data()?.rol || 'Usuario';
+      const departamento = doc.data()?.departamento || 'Equipo';
+      
+      const horaActual = new Date().getHours();
+      let saludo = 'Bienvenido';
+      if (horaActual < 12) saludo = 'Buenos días';
+      else if (horaActual < 18) saludo = 'Buenas tardes';
+      else saludo = 'Buenas noches';
+      
+      welcomeMessage.textContent = `${saludo}, ${nombreUsuario}. Acceso a la plataforma REPREGAHER — Sistema integral de gestión de inventario. Rol: ${rolUsuario} | Departamento: ${departamento}`;
+      
+    } catch (error) {
+      console.warn('No se pudo cargar información del usuario:', error);
+    }
+  } else {
+    perfilText.style.display = 'none';
+    perfilImgLi.style.display = 'none';
+    btnLoginLi.style.display = 'block';
+  }
+  
+  // CARGAR ESTADÍSTICAS
+  cargarEstadisticas();
+});
+
+// CARGAR ESTADÍSTICAS DEL DASHBOARD
+async function cargarEstadisticas() {
+  try {
+    // Obtener total de productos
+    const productosSnapshot = await db.collection('productos').get();
+    document.getElementById('total-productos').textContent = productosSnapshot.size;
+    
+    // Obtener alertas activas
+    const alertasSnapshot = await db.collection('alertas').where('activa', '==', true).get();
+    document.getElementById('alertas-count').textContent = alertasSnapshot.size;
+    
+    // Obtener movimientos del día
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    const movimientosSnapshot = await db.collection('movimientos')
+      .where('fecha', '>=', hoy)
+      .get();
+    document.getElementById('movimientos-count').textContent = movimientosSnapshot.size;
+    
+  } catch (error) {
+    console.warn('Error cargando estadísticas:', error);
+    document.getElementById('total-productos').textContent = '0';
+    document.getElementById('alertas-count').textContent = '0';
+    document.getElementById('movimientos-count').textContent = '0';
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimientos</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" data-aos="fade-down">
+    <div class="navbar-logo">
+  <img src="img/Logo.png" alt="Repregaher Logo">
+</div>
+    <ul class="navbar-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="movimientos.html" class="active">Movimientos</a></li>
+      <li><a href="reportes.html">Reportes</a></li>
+      <li><a href="inventario.html">Inventario</a></li>
+      <li><a href="alertas.html">Alertas</a></li>
+      <button id="theme-toggle" class="theme-btn">🌙</button>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" data-aos="fade-up">
+    <h1>Registrar Movimientos</h1>
+    <p>Control de entradas y salidas del inventario</p>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+
+    <!-- FORMULARIO -->
+    <section class="card" data-aos="fade-up">
+      <h2>Nuevo movimiento</h2>
+
+      <form id="form-movimiento" class="form-grid">
+        <input type="text" id="producto" placeholder="Producto" required>
+        <input type="number" id="cantidad" placeholder="Cantidad" required>
+        <select id="tipo">
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+        </select>
+        <button type="submit" class="btn-primary">Registrar</button>
+      </form>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section class="card" data-aos="fade-up">
+      <h2>Historial de movimientos</h2>
+      <ul id="lista-movimientos" class="lista"></ul>
+    </section>
+
+  </main>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script>
+    // CONFIG FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0S0gIC3efdIjONM7nZli2x4nwlgRTWNE",
+      authDomain: "repregaher.firebaseapp.com",
+      projectId: "repregaher",
+      storageBucket: "repregaher.firebasestorage.app",
+      messagingSenderId: "404425871100",
+      appId: "1:404425871100:web:16cfdbca6427bc4e4e5179"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        alert("Debes iniciar sesión o registrarte para acceder a esta sección.");
+        window.location.href = "registro.html";
+      }
+    });
+
+    AOS.init({ duration: 900, once: true });
+
+    // ===================== TEMA OSCURO =====================
+    const toggleBtn = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+      if (document.body.classList.contains("dark-theme")) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    // ===================== MOVIMIENTOS =====================
+    const form = document.getElementById("form-movimiento");
+    const lista = document.getElementById("lista-movimientos");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const producto = document.getElementById("producto").value;
+      const cantidad = document.getElementById("cantidad").value;
+      const tipo = document.getElementById("tipo").value;
+
+      const li = document.createElement("li");
+      li.setAttribute("data-aos", "fade-left");
+
+      li.innerHTML = `
+        <span><strong>${producto}</strong> - ${cantidad} unidades (${tipo})</span>
+        <button class="btn-delete">Eliminar</button>
+      `;
+
+      // Eliminar con confirmación + animación
+      li.querySelector(".btn-delete").addEventListener("click", () => {
+        if (confirm("¿Seguro que deseas eliminar este movimiento?")) {
+          li.setAttribute("data-aos", "fade-right");
+          li.style.opacity = "0";
+          setTimeout(() => li.remove(), 300);
+        }
+      });
+
+      lista.appendChild(li);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

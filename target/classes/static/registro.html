@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - REPREGAHER</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+    }
+
+    .registro-wrapper {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      background: linear-gradient(135deg, #142890 0%, #1d3adb 100%);
+    }
+
+    /* LEFT SECTION - INFO */
+    .registro-left {
+      padding: 80px 60px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .registro-left::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .registro-left-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .registro-left h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .registro-left-desc {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      max-width: 90%;
+    }
+
+    .registro-benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .benefit-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateX(8px);
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .benefit-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+    }
+
+    /* RIGHT SECTION - FORM */
+    .registro-right {
+      padding: 60px 50px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .registro-form-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .registro-form-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .registro-form-header p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    #form-registro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 14px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #333;
+      background: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input::placeholder {
+      color: #aaa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #142890;
+      box-shadow: 0 0 0 4px rgba(20, 40, 160, 0.08);
+      outline: none;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23142890' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 20px;
+      padding-right: 40px;
+    }
+
+    #form-registro button[type="submit"] {
+      grid-column: 1 / -1;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #142890 0%, #1d3adb 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 10px 30px rgba(20, 40, 160, 0.2);
+      margin-top: 8px;
+    }
+
+    #form-registro button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(20, 40, 160, 0.3);
+    }
+
+    #form-registro button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    .form-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: #999;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .form-divider::before,
+    .form-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #e8e8e8;
+    }
+
+    #btn-google-login {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 10px;
+      background: white;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    #btn-google-login:hover {
+      background: #f8f8f8;
+      border-color: #d8d8d8;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .registro-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .registro-footer a {
+      color: #142890;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .registro-footer a:hover {
+      color: #1d3adb;
+    }
+
+    /* THEME TOGGLE */
+    .theme-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* DARK THEME */
+    .dark-theme .registro-wrapper {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    }
+
+    .dark-theme .registro-right {
+      background: #1a1a1a;
+    }
+
+    .dark-theme .registro-form-header h2 {
+      color: #e8e8e8;
+    }
+
+    .dark-theme .registro-form-header p {
+      color: #999;
+    }
+
+    .dark-theme .form-group label {
+      color: #e8e8e8;
+    }
+
+    .dark-theme .form-group input,
+    .dark-theme .form-group select {
+      background: #0f0f0f;
+      border-color: #333;
+      color: #e8e8e8;
+    }
+
+    .dark-theme .form-group input::placeholder {
+      color: #666;
+    }
+
+    .dark-theme .form-group input:focus,
+    .dark-theme .form-group select:focus {
+      border-color: #1d3adb;
+      box-shadow: 0 0 0 4px rgba(29, 58, 219, 0.1);
+    }
+
+    .dark-theme .form-divider {
+      color: #666;
+    }
+
+    .dark-theme .form-divider::before,
+    .dark-theme .form-divider::after {
+      background: #333;
+    }
+
+    .dark-theme #btn-google-login {
+      background: #0f0f0f;
+      border-color: #333;
+      color: #e8e8e8;
+    }
+
+    .dark-theme #btn-google-login:hover {
+      background: #1a1a1a;
+      border-color: #444;
+    }
+
+    .dark-theme .registro-footer {
+      color: #999;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .registro-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .registro-left {
+        display: none;
+      }
+
+      .registro-right {
+        padding: 40px 30px;
+      }
+
+      #form-registro {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .form-group.full {
+        grid-column: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .registro-right {
+        padding: 30px 20px;
+        justify-content: flex-start;
+      }
+
+      .registro-form-header h2 {
+        font-size: 1.8rem;
+      }
+
+      #form-registro {
+        gap: 12px;
+      }
+
+      .form-group input,
+      .form-group select {
+        padding: 12px 14px;
+        font-size: 16px;
+      }
+
+      #form-registro button[type="submit"] {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+
+<div class="registro-wrapper">
+  <!-- LEFT SIDE -->
+  <div class="registro-left" data-aos="fade-right">
+    <div class="registro-left-content">
+      <h1>Gestión Inteligente de Inventario</h1>
+      <p class="registro-left-desc">Únete al equipo REPREGAHER y accede a nuestra plataforma profesional para control total de inventario, reportes en tiempo real y alertas automáticas.</p>
+    </div>
+
+    <div class="registro-benefits-list">
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-text">Control total de tu inventario en tiempo real</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-text">Reportes detallados de movimientos e historial</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⚠️</div>
+        <div class="benefit-text">Alertas automáticas de productos críticos</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔐</div>
+        <div class="benefit-text">Seguridad y acceso desde cualquier dispositivo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="registro-right" data-aos="fade-left">
+    <div class="registro-form-header">
+      <h2>Crear Cuenta</h2>
+      <p>Completa el formulario para comenzar</p>
+    </div>
+
+    <form id="form-registro">
+      <div class="form-group">
+        <label for="nombreTrabajador">Nombre Completo</label>
+        <input type="text" id="nombreTrabajador" placeholder="Nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+        <select id="cargo" required>
+          <option value="" disabled selected>Selecciona tu cargo</option>
+          <option value="Jefe">Jefe</option>
+          <option value="Contador">Contador</option>
+          <option value="Comerciante">Comerciante</option>
+          <option value="Operario">Operario</option>
+          <option value="Logística">Logística</option>
+          <option value="Administrativo">Administrativo</option>
+          <option value="Supervisor">Supervisor</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fechaNacimiento" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input type="text" id="cedula" placeholder="Digita tu Cédula" required>
+      </div>
+
+      <div class="form-group full">
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" placeholder="Tu correo" required>
+      </div>
+
+      <div class="form-group full">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" required>
+      </div>
+
+      <button type="submit">Crear Cuenta</button>
+
+      <div class="form-divider">Continuar con</div>
+
+      <button type="button" id="btn-google-login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Google
+      </button>
+
+      <div class="registro-footer">
+        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button id="theme-toggle" class="theme-btn">🌙</button>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+  AOS.init({ duration: 900, once: true });
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyB0S0gIC3efdIjONM7nZli2x4nwlgRTWNE",
+    authDomain: "repregaher.firebaseapp.com",
+    projectId: "repregaher",
+    storageBucket: "repregaher.firebasestorage.app",
+    messagingSenderId: "404425871100",
+    appId: "1:404425871100:web:16cfdbca6427bc4e4e5179"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  const form = document.getElementById("form-registro");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("correo").value;
+    const password = document.getElementById("contrasena").value;
+
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      await db.collection("usuarios").doc(user.uid).set({
+        nombre: document.getElementById("nombreTrabajador").value,
+        cargo: document.getElementById("cargo").value || '',
+        fechaNacimiento: document.getElementById("fechaNacimiento").value,
+        cedula: document.getElementById("cedula").value,
+        correo: email,
+        creado: new Date()
+      });
+
+      alert("✅ Registro exitoso");
+      window.location.href = "login.html";
+
+    } catch (error) {
+      alert("❌ Error: " + error.message);
+    }
+  });
+
+  const providerGoogleRegistro = new firebase.auth.GoogleAuthProvider();
+  providerGoogleRegistro.setCustomParameters({ prompt: 'select_account' });
+
+  async function procesarRegistroGoogle(result) {
+    if (!result || !result.user) return;
+    const user = result.user;
+    const userDoc = await db.collection("usuarios").doc(user.uid).get();
+    if (!userDoc.exists) {
+      await db.collection("usuarios").doc(user.uid).set({
+        nombre: user.displayName || '',
+        correo: user.email,
+        creado: new Date()
+      });
+    }
+    alert("✅ Registro con Google exitoso");
+    window.location.href = "index.html";
+  }
+
+  auth.getRedirectResult().then(async (result) => {
+    if (result.user) {
+      await procesarRegistroGoogle(result);
+    }
+  }).catch((error) => {
+    console.warn('Google Redirect Result error:', error.code, error.message);
+  });
+
+  document.getElementById("btn-google-login").addEventListener("click", async () => {
+    try {
+      const result = await auth.signInWithPopup(providerGoogleRegistro);
+      await procesarRegistroGoogle(result);
+    } catch (error) {
+      console.error('Google registro error:', error.code, error.message);
+      if (error.code === 'auth/popup-blocked' || error.code === 'auth/operation-not-supported-in-this-environment' || error.code === 'auth/invalid-credential') {
+        alert('El registro con Google no funcionó aquí. Se intentará con redireccionamiento.');
+        auth.signInWithRedirect(providerGoogleRegistro);
+        return;
+      }
+      alert("❌ Error: " + error.code + " - " + error.message);
+    }
+  });
+
+  const toggleBtn = document.getElementById("theme-toggle");
+  const currentTheme = localStorage.getItem("theme");
+
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    if (document.body.classList.contains("dark-theme")) {
+      toggleBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  });
+</script>
+
+</body>
+</html>

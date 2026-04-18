@@ -13,7 +13,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-logo">
-    <img src="img/Logo.png">
+    <img src="img/Logo.png" alt="REPREGAHER logo">
   </div>
 
   <ul class="navbar-links">
@@ -22,21 +22,60 @@
     <li><a href="reportes.html">Reportes</a></li>
     <li><a href="inventario.html">Inventario</a></li>
     <li><a href="alertas.html">Alertas</a></li>
-    <li id="perfil-text"><a href="perfil.html">👤 Perfil</a></li>
+    <li id="perfil-text"><a href="perfil.html">Perfil</a></li>
     <li id="perfil-img-li" style="display:none;"><a href="perfil.html" id="perfil-img-link"><img id="navbar-profile-pic" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23142890'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M 4 20 c 0-5.373 3.582-10 8-10s 8 4.627 8 10'/%3E%3C/svg%3E" alt="Perfil"></a></li>
-    <li id="btn-login-li" style="display:none;"><a href="login.html" class="btn-login">Iniciar sesión/Registrarse</a></li>
-    <button id="theme-toggle" class="theme-btn">🌙</button>
   </ul>
+  <div class="navbar-actions">
+    <div id="btn-login-li" style="display:none;"><a href="login.html" class="btn-login">Iniciar sesión</a></div>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+  </div>
 </nav>
 
-<!-- HERO SECTION PROFESIONAL -->
-<section class="hero-welcome" data-aos="fade-down">
-  <div class="hero-welcome-content">
-    <h1>Gestión Inteligente de Inventario</h1>
-    <p>Plataforma profesional para control total de inventario, movimientos y reportes en tiempo real. Diseñada para la industria de filtración.</p>
-    <div class="hero-welcome-actions">
-      <a href="inventario.html" class="btn-action btn-primary-action">Ir al Inventario</a>
-      <a href="#about" class="btn-action btn-secondary-action">Conoce Más</a>
+<section class="hero" data-aos="fade-down">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Soluciones Industriales</span>
+      <h1>Control de inventario con seguridad y eficiencia empresarial</h1>
+      <p>Plataforma digital para la gestión de inventario, movimientos, reportes y alertas, alineada con las mejores prácticas de la industria de filtración.</p>
+      <div class="hero-actions">
+        <a href="inventario.html" class="btn-primary">Ver inventario</a>
+        <a href="#about" class="hero-secondary">Conoce más</a>
+      </div>
+      <div class="hero-highlights">
+        <div class="hero-highlight">
+          <strong>25+</strong>
+          <span>Años de experiencia industrial</span>
+        </div>
+        <div class="hero-highlight">
+          <strong>24/7</strong>
+          <span>Visibilidad en tiempo real</span>
+        </div>
+        <div class="hero-highlight">
+          <strong>100%</strong>
+          <span>Control de stock y alertas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-panel">
+        <div class="hero-panel-header">
+          <span>Panel de control</span>
+          <div class="status-dot"></div>
+        </div>
+        <h2>Visión 360° de tu inventario</h2>
+        <p>Resumen inmediato de niveles, movimientos y alertas con indicadores claros para decisiones más rápidas y seguras.</p>
+        <div class="hero-metrics">
+          <div class="hero-metric">
+            <strong>128</strong>
+            <span>Productos activos</span>
+          </div>
+          <div class="hero-metric">
+            <strong>12</strong>
+            <span>Alertas críticas pendientes</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -44,116 +83,112 @@
 <div class="app-window">
 <main>
 
-<!-- ABOUT SECTION -->
 <section class="about-section" id="about" data-aos="fade-up">
+  <div class="section-header">
+    <h2>Sobre REPREGAHER</h2>
+    <p>Conectamos el conocimiento de filtración industrial con una plataforma digital robusta para el control de inventarios empresariales.</p>
+  </div>
+
   <div class="about-grid">
     <div class="about-text">
-      <h2>Sobre REPREGAHER</h2>
       <p><strong>Representaciones Garcés Hermanos — REPREGAHER LTDA</strong> es una empresa especializada en soluciones de filtración industrial con más de 25 años de trayectoria.</p>
-      <p>Ofrecemos equipos de alta tecnología, asesoría técnica especializada y ahora una plataforma digital profesional para gestionar tu inventario de manera eficiente.</p>
-      
+      <p>Ofrecemos equipos de alta tecnología, asesoría técnica especializada y ahora una plataforma profesional para gestionar tu inventario de manera eficiente.</p>
       <div class="about-highlights">
         <div class="highlight-item">
-          <div class="highlight-icon">📊</div>
+          <div class="highlight-icon">01</div>
           <div class="highlight-text">
-            <h4>Control Total</h4>
-            <p>Gestiona inventario en tiempo real con búsqueda avanzada</p>
+            <h4>Control total</h4>
+            <p>Monitorea inventarios, niveles de stock y movimientos desde un solo lugar.</p>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">📈</div>
+          <div class="highlight-icon">02</div>
           <div class="highlight-text">
-            <h4>Reportes Detallados</h4>
-            <p>Analiza estadísticas y tendencias de movimientos</p>
+            <h4>Reportes precisos</h4>
+            <p>Genera análisis claros para mejorar rotación, compras y costos operativos.</p>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">⚠️</div>
+          <div class="highlight-icon">03</div>
           <div class="highlight-text">
-            <h4>Alertas Automáticas</h4>
-            <p>Notificaciones de productos críticos o bajo stock</p>
+            <h4>Alertas inteligentes</h4>
+            <p>Recibe avisos automáticos sobre productos críticos y niveles bajos de stock.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="about-image">
-      <img src="img/1.jpg" alt="Filtración Industrial">
+      <img src="img/1.jpg" alt="Filtración industrial" />
     </div>
   </div>
 </section>
 
-<!-- FEATURES SECTION -->
 <section class="features-section" data-aos="fade-up">
   <div class="section-header">
     <h2>Funcionalidades Principales</h2>
-    <p>Herramientas profesionales diseñadas para optimizar tu gestión operativa</p>
+    <p>Herramientas diseñadas para que tu operación sea más ágil, segura y eficiente.</p>
   </div>
 
   <div class="features-grid">
-    <div class="feature-card" onclick="location.href='inventario.html'" style="cursor: pointer;">
-      <div class="feature-icon">📦</div>
+    <div class="feature-card" onclick="location.href='inventario.html'">
+      <div class="feature-icon">INV</div>
       <h3>Inventario</h3>
-      <p>Gestiona el stock completo de productos filtrantes con búsqueda avanzada y categorización inteligente</p>
+      <p>Gestiona el stock completo de productos filtrantes con búsqueda avanzada y categorización inteligente.</p>
     </div>
-
-    <div class="feature-card" onclick="location.href='movimientos.html'" style="cursor: pointer;">
-      <div class="feature-icon">🔄</div>
+    <div class="feature-card" onclick="location.href='movimientos.html'">
+      <div class="feature-icon">MOV</div>
       <h3>Movimientos</h3>
-      <p>Registra entradas, salidas y transferencias de productos en tiempo real con histórico completo</p>
+      <p>Registra entradas, salidas y transferencias con trazabilidad y control en cada paso.</p>
     </div>
-
-    <div class="feature-card" onclick="location.href='reportes.html'" style="cursor: pointer;">
-      <div class="feature-icon">📊</div>
+    <div class="feature-card" onclick="location.href='reportes.html'">
+      <div class="feature-icon">REP</div>
       <h3>Reportes</h3>
-      <p>Analiza estadísticas de ventas, rotación y rendimiento del inventario con gráficos detallados</p>
+      <p>Obtén estadísticas de rotación, consumo y desempeño con análisis visual y exportación.</p>
     </div>
-
-    <div class="feature-card" onclick="location.href='alertas.html'" style="cursor: pointer;">
-      <div class="feature-icon">⚠️</div>
+    <div class="feature-card" onclick="location.href='alertas.html'">
+      <div class="feature-icon">ALT</div>
       <h3>Alertas</h3>
-      <p>Recibe notificaciones automáticas de productos críticos, bajo stock o cambios importantes</p>
+      <p>Activa notificaciones automáticas sobre productos críticos y eventos de inventario.</p>
     </div>
   </div>
 </section>
 
-<!-- CATÁLOGO EATON -->
-<section class="contenido eaton-catalogo" data-aos="fade-up">
-  <h2>Catálogo EATON - Productos Destacados</h2>
-  <p class="subtitle">Conoce nuestros productos líderes en filtración industrial disponibles en REPREGAHER</p>
-  
-  <div class="productos-destacados">
-    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/hydraulic-filters', '_blank')">
-      <div class="producto-imagen">🔹</div>
-      <h3>Filtros Hidráulicos</h3>
-      <p>Soluciones avanzadas de filtración para sistemas hidráulicos de alta presión y rendimiento</p>
-      <span class="producto-enlace">Ver catálogo →</span>
-    </div>
+<section class="eaton-section" data-aos="fade-up">
+  <div class="section-header">
+    <h2>Catálogo EATON</h2>
+    <p>Soluciones de filtración industrial confiables, disponibles a través de REPREGAHER.</p>
+  </div>
 
-    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/air-filters', '_blank')">
-      <div class="producto-imagen">💨</div>
-      <h3>Filtros de Aire</h3>
-      <p>Filtración eficiente de aire para aplicaciones industriales y de compresión</p>
-      <span class="producto-enlace">Ver catálogo →</span>
+  <div class="eaton-products-grid">
+    <div class="eaton-product-card" onclick="window.open('https://www.eaton.com/co/es-mx/site-search.html.searchTerm$filtros%20hidraulicos.tabs$all.html', '_blank')">
+      <div class="eaton-product-icon">H</div>
+      <h3>Filtros hidráulicos</h3>
+      <p>Soluciones avanzadas para sistemas hidráulicos de alta presión y rendimiento.</p>
+      <span class="eaton-product-link">Ver catálogo →</span>
     </div>
-
-    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/fluid-power-components', '_blank')">
-      <div class="producto-imagen">⚙️</div>
-      <h3>Filtros de Potencia de Fluidos</h3>
-      <p>Componentes de filtración para sistemas de potencia de fluidos de precisión</p>
-      <span class="producto-enlace">Ver catálogo →</span>
+    <div class="eaton-product-card" onclick="window.open('https://www.eaton.com/cl/es-mx/products/filtration-solutions.html', '_blank')">
+      <div class="eaton-product-icon">A</div>
+      <h3>Filtros de aire</h3>
+      <p>Filtración eficiente de aire para aplicaciones industriales y de compresión.</p>
+      <span class="eaton-product-link">Ver catálogo →</span>
     </div>
-
-    <div class="producto-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration', '_blank')">
-      <div class="producto-imagen">🌐</div>
-      <h3>Todos los Productos</h3>
-      <p>Explora el catálogo completo de soluciones de filtración de EATON</p>
-      <span class="producto-enlace">Ir a catálogo completo →</span>
+    <div class="eaton-product-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration/fluid-power-components', '_blank')">
+      <div class="eaton-product-icon">F</div>
+      <h3>Componentes de fluido</h3>
+      <p>Filtros y componentes para sistemas de potencia de fluidos de precisión.</p>
+      <span class="eaton-product-link">Ver catálogo →</span>
+    </div>
+    <div class="eaton-product-card" onclick="window.open('https://www.eaton.com/en-us/catalog/filtration', '_blank')">
+      <div class="eaton-product-icon">C</div>
+      <h3>Catálogo completo</h3>
+      <p>Explora la gama completa de soluciones de filtración industrial de EATON.</p>
+      <span class="eaton-product-link">Ir a catálogo completo →</span>
     </div>
   </div>
 
   <div class="eaton-info">
     <p><strong>EATON</strong> es un líder global en soluciones de filtración industrial con tecnología avanzada, confiabilidad comprobada y soporte técnico especializado.</p>
-    <a href="https://www.eaton.com" target="_blank" class="btn-eaton">Visitar EATON.com</a>
+    <a href="https://www.eaton.com/co/es-mx.html" target="_blank" class="btn-eaton">Visitar EATON.com</a>
   </div>
 </section>
 
@@ -487,7 +522,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyB0S0gIC3efdIjONM7nZli2x4nwlgRTWNE",
   authDomain: "repregaher.firebaseapp.com",
   projectId: "repregaher",
-  storageBucket: "repregaher.firebasestorage.app",
+  storageBucket: "repregaher.appspot.com",
   messagingSenderId: "404425871100",
   appId: "1:404425871100:web:16cfdbca6427bc4e4e5179"
 };
